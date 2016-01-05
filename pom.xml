@@ -4,7 +4,7 @@
 
   <groupId>com.jjurm.libs</groupId>
   <artifactId>charlcd</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
 
   <name>charlcd</name>
   <description>CharLCD</description>
@@ -16,7 +16,24 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>jjurm.com</id>
+      <name>JJurM</name>
+      <url>dav://jjurm.com:5005/web/maven2</url>
+    </repository>
+  </distributionManagement>
+
   <build>
+    <extensions>
+      <!-- Enabling the use of SSH -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>2.10</version>
+      </extension>
+    </extensions>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -37,7 +54,6 @@
       <url>https://oss.sonatype.org/content/groups/public</url>
       <snapshots>
         <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
       </snapshots>
     </repository>
   </repositories>

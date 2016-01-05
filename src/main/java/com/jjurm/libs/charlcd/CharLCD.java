@@ -347,6 +347,7 @@ public class CharLCD {
 	 */
 	public void clear() {
 		command(CMD.CLEARDISPLAY.bits);
+		sleep(5);
 	}
 	
 	/**
@@ -367,7 +368,7 @@ public class CharLCD {
 			throw new IllegalArgumentException(String.format("Requested cursor position (%d, %d) is out of range", col, row));
 		}
 		// row offsets are [0x00, 0x40, 0x00 + cols, 0x40 + cols]
-		int addr = ((row & 0x01) * 0x40 + (row & 0x02) * cols) + cols;
+		int addr = ((row & 0x01) * 0x40 + ((row >> 1) & 0x01) * cols) + col;
 		command(CMD.SETDDRAMADDR.bits
 				| addr
 		);
@@ -487,7 +488,7 @@ public class CharLCD {
 			data(' ');
 		}
 	}
-	
+
 	/**
 	 * Turns display backlight on or off.
 	 * 
@@ -498,5 +499,5 @@ public class CharLCD {
 			out_backlight.setState(on);
 		}
 	}
-	
+
 }
