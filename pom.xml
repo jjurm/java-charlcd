@@ -20,16 +20,16 @@
     <repository>
       <id>jjurm.com</id>
       <name>JJurM</name>
-      <url>ftp://jjurm.com/web/maven2</url>
+      <url>dav://jjurm.com:5005/web/maven2</url>
     </repository>
   </distributionManagement>
 
   <build>
     <extensions>
       <!-- Enabling the use of SSH -->
-     <extension>
+      <extension>
         <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-ftp</artifactId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
         <version>2.10</version>
       </extension>
     </extensions>
