@@ -347,6 +347,7 @@ public class CharLCD {
 	 */
 	public void clear() {
 		command(CMD.CLEARDISPLAY.bits);
+		sleep(5);
 	}
 	
 	/**
@@ -487,7 +488,7 @@ public class CharLCD {
 			data(' ');
 		}
 	}
-	
+
 	/**
 	 * Turns display backlight on or off.
 	 * 
@@ -498,5 +499,5 @@ public class CharLCD {
 			out_backlight.setState(on);
 		}
 	}
-	
+
 }
